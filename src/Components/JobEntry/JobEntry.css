@@ -1,0 +1,52 @@
+.toggle-button {
+    background-color: transparent;
+    border: none;
+    color: #510202; /* Text color */
+    padding: 0;
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .toggle-button::before,
+  .toggle-button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px; /* Line thickness */
+    background-color: #ffd700; /* Line color */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .toggle-button::before {
+    top: 0;
+  }
+  
+  .toggle-button::after {
+    bottom: 0;
+  }
+  
+  .toggle-button:hover::before,
+  .toggle-button:hover::after {
+    transform: scale(1.2); /* Increase scale on hover */
+  }
+  
+
+  .bullet-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .bullet-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .bullet-list li::before {
+    content: "\2022"; /* Bullet character */
+    position: absolute;
+    left: 0;
+    color: #947e02; /* Bullet color */
+  }

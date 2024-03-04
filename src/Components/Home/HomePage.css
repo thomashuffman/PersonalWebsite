@@ -5,10 +5,25 @@
     left: 0;
     right: 0;
     text-align: center;
+    color: #001f3f;
 }
 
 .MenuLeft{
     outline: 5px black;
     float: left;
     margin-left: 2%;
+    z-index: 100;
+}
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -10;
+    top: 0;
+    left: 0
+}
+
+.zIndex{
+    z-index: -100;
 }

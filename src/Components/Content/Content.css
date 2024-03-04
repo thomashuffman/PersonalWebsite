@@ -1,5 +1,262 @@
-.MenuLeft{
-    outline: 5px black;
-    float: left;
-    margin-left: 2%;
+.centered{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    height: 100%;
+    color: lightgray;
+    z-index: -5;
+}
+
+.content {
+    position: relative;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  .content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    z-index: 100;
+  }
+
+  .resume {
+    position: absolute;
+    top: 115%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #001f3f;
+    background-color: rgba(249, 249, 249, 0.1); /* Semi-transparent white background */
+    border-radius: 10px;
+    overflow: hidden; /* Ensures inner elements don't overflow */
+    transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+}
+
+.resume .skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Gap between items */
+  }
+  
+  .resume .skill {
+    background-color: #f5f5f5; /* Light gray background */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+
+.resume:hover {
+    background-color: rgba(249, 249, 249, 0.2); /* Lighten the background color on hover */
+}
+
+.resume .experience {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Gap between items */
+  }
+  
+  .resume .job {
+    background-color: #f5f5f5; /* Light gray background */
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .resume .job h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #001f3f; /* Dark blue */
+  }
+  
+  .resume .job p {
+    margin: 10px 0;
+    color: #001f3f; /* Dark gray */
+  }
+
+.resume h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #001f3f;
+    margin-bottom: 10px;
+    animation: fadeInDown 1s ease-out; /* Fade-in animation for heading */
+}
+
+.resume h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #001f3f;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    animation: slideInLeft 1s ease-out; /* Slide-in animation for subheading */
+}
+
+.resume p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease-out; /* Fade-in animation for paragraphs */
+}
+
+.resume .experience {
+    margin-bottom: 20px;
+    animation: slideInRight 1s ease-out; /* Slide-in animation for experience section */
+}
+
+.resume .experience h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.resume .experience p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.resume .education,
+.resume .clearances,
+.resume .certifications {
+    margin-top: 20px;
+}
+
+.resume .education p,
+.resume .clearances p,
+.resume .certifications p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.resume .education h2,
+.resume .clearances h2,
+.resume .certifications h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.download {
+    position: absolute;
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #f12711, #f5af19);
+    border: none;
+    border-radius: 50px;
+    left: 1200px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.download::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.6s ease-out;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+.download:hover::before {
+    width: 0;
+    height: 0;
+}
+
+.download:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.download span {
+    position: relative;
+    z-index: 1;
+}
+
+.download::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-150%);
+    }
+    100% {
+        transform: translateX(150%);
+    }
 }
