@@ -1,52 +1,64 @@
 .toggle-button {
-    background-color: transparent;
+    width: 120px;
+    height: 50px;
+    background-color: lightblue; /* Green */
     border: none;
-    color: #510202; /* Text color */
-    padding: 0;
-    width: 50px; /* Adjust width as needed */
-    height: 50px; /* Adjust height as needed */
+    color: rgb(31, 31, 31);
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 25px; /* Rounded corners */
     cursor: pointer;
+    outline: none; /* Remove default focus outline */
     position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
   }
   
   .toggle-button::before,
   .toggle-button::after {
     content: '';
     position: absolute;
+    top: 0;
     width: 100%;
-    height: 3px; /* Line thickness */
-    background-color: #ffd700; /* Line color */
-    transition: transform 0.3s ease-in-out;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   
   .toggle-button::before {
-    top: 0;
+    left: -100%;
+    transform: skewX(-30deg);
   }
   
   .toggle-button::after {
-    bottom: 0;
+    right: -100%;
+    transform: skewX(30deg);
   }
   
   .toggle-button:hover::before,
   .toggle-button:hover::after {
-    transform: scale(1.2); /* Increase scale on hover */
+    left: 100%;
+    right: 100%;
   }
-  
 
   .bullet-list {
     list-style-type: none;
     padding: 0;
+    font-size: 15px;
+    text-align: left;
   }
   
   .bullet-list li {
     position: relative;
     padding-left: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
   }
   
   .bullet-list li::before {
     content: "\2022"; /* Bullet character */
+    font-size: 20px;
     position: absolute;
     left: 0;
-    color: #947e02; /* Bullet color */
+    color: black; /* Bullet color */
   }

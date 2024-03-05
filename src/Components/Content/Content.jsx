@@ -15,36 +15,48 @@ const onButtonClick = () => {
 function Content ({selected}) {
   const jobs = [
     {
-      title: "Software Developer, INTEGRITYOne Partners",
+      title: "Senior Systems Engineer, INTEGRITYOne Partners",
       location: "Fairfax, VA",
       duration: "(04/2020 – Present)",
       description: "As a software developer for the ICE TECS Modernization Program, Digital Records Management (DRM) system, responsible for frontend and backend development of the system.  The DRM system enables 100% digital case file management across the ~10K user Homeland Security Investigations (HSI) CONUS and OCONUS field locations.",
       bullets: [
-        "Developed new features for the ICE TECS Modernization Program.",
-        "Collaborated with team members to improve system performance.",
-        "Maintained existing codebase and fixed bugs as necessary."
+        "Working with numerous Javascript libraries including React, Material UI, and Syncfusion in order to fulfill all HSI functional requirements while considering UX best practices to ensure a seamless experience for users looking to easily upload, organize, approve, and manage access, along with additional workflows",
+        "Using GraphQL to save, present and manipulate data so that users are able to persist their changes in a PostgreSQL database",
+        "Using Kafka to set up and manage systemwide notifications delivery functionality in a queue-based way",
+        "Using Docker to build and run images in order to have a testing environment readily available to demonstrate new features to the client",
+        "Developing, maintaining, and supporting continuous integration using Jenkins, in accordance with ICE Architecture Services Branch Enterprise CI/CD standards",
+        "Performing unit testing for React functions using Jest in an effort to increase code coverage to meet client expectations",
+        "Interacting directly with users and helping them troubleshoot potential bugs/issues with the system",
+        "Writing and integrating python-based lambdas into the system in order to increase the serverless architecture",
+        "Querying and manipulating databases using PostgreSQL",
+        "Using Agile Scrum methodology including sprint planning, review, and retrospectives, velocity forecasting, story point sizing, team code reviews on a 7 person development team",
+        "Using ICE Enterprise JIRA to develop tasks, groom the backlog and manage resources",
+        "Working side-by-side 2-3x per week with clients to refine requirements, groom the backlog, prepare and run demo’s and user acceptance testing."
       ]
     },
     {
       title: "Software Developer, Pyramid Systems Inc.",
       location: "Fairfax, VA",
-      duration: "08/2018-04/2020",
+      duration: "(08/2018-04/2020)",
       description: "As a full stack Java developer, developed new features, deployed new releases, and fixed bugs for the InfoPass scheduling system. ",
       bullets: [
-        "Developed new features for the ICE TECS Modernization Program.",
-        "Collaborated with team members to improve system performance.",
-        "Maintained existing codebase and fixed bugs as necessary."
+        "Worked on the National Appointment Scheduling System (NASS) Project which is a microservice based system used by the USCIS to schedule appointments across the United States",
+        "Used Java, AngularJS, HTML5, and Oracle SQL to develop various scheduling features for web-based applications",
+        "Worked in a DevOps role to deploy jars to various environments including test, performance, preprod, and production",
+        "Experience using multiple frameworks including JUnit for testing, Hibernate for relational mapping, and JDBC for connecting to databases",
+        "Designing, developing, and maintaining REST APIs using Java to maintain and manipulate data"
       ]
     },
     {
       title: "Software Developer Internship, BigBear Inc.",
       location: "Charlottesville, VA",
-      duration: "01/2018-05/2018",
+      duration: "(01/2018-05/2018)",
       description: "As junior developer, developed, reviewed, revised, and implemented UI/UX features for DOD system.",
       bullets: [
-        "Developed new features for the ICE TECS Modernization Program.",
-        "Collaborated with team members to improve system performance.",
-        "Maintained existing codebase and fixed bugs as necessary."
+        "Found and fixed bugs using Eclipse in a Kanban development environment",
+        "Created new features for Java-based applications used by the Department of Defense",
+        "Worked collaboratively and independently on extensive projects in a 5-person team",
+        "Worked in an Agile development environment using JIRA for task, resource, and velocity management"
       ]
     }
     // Add more job entries here
@@ -90,6 +102,14 @@ function Content ({selected}) {
   <div class="skill">
     <p>SQL</p>
     <p>(3 years)</p>
+  </div>
+  <div class="skill">
+    <p>Python</p>
+    <p>(2 years)</p>
+  </div>
+  <div class="skill">
+    <p>Kafka</p>
+    <p>(2 years)</p>
   </div>
 </div>
       {/* <div class="skills">
@@ -143,6 +163,8 @@ function Content ({selected}) {
       <h2>Certifications</h2>
       <p>National Security Telecommunications and Information System Security Instruction (NSTISSI) 4011</p>
       <p>AWS Certified Cloud Practitioner</p>
+      <br></br>
+      <br></br>
     </div>
           </div>
           }          

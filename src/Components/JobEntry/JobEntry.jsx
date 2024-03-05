@@ -12,11 +12,13 @@ function JobEntry({ title, location, duration, description, bullets }) {
       <div className="job">
 
         <h3>{title}</h3>
+        <p>{duration}</p>
         {!isCollapsed && (
           <div>
             <p>{location}</p>
-            <p>{duration}</p>
+            
             <p>{description}</p>
+            <br></br>
             {bullets && bullets.length > 0 && (
             <ul className="bullet-list">
               {bullets.map((bullet, index) => (

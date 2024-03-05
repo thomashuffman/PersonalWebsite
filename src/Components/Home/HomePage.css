@@ -1,12 +1,15 @@
-.Header{
+.Header {
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: #001f3f;
-}
+    left: 50%; /* Position in the center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    top: -15px; /* Adjust the distance from the top as needed */
+    font-size: 36px; /* Increase font size */
+    font-weight: bold; /* Make the font bold */
+    color: #001f3f; /* Dark blue color */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Increase letter spacing */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  }
 
 .MenuLeft{
     outline: 5px black;
