@@ -13,6 +13,10 @@ const onButtonClick = () => {
 };
 
 function Content ({selected}) {
+  if(selected ==="Github"){
+    const username = 'thomashuffman'; // Update with your GitHub username
+    displayCommitActivity(username);  
+  }
   const jobs = [
     {
       title: "Senior Systems Engineer, INTEGRITYOne Partners",
@@ -112,34 +116,6 @@ function Content ({selected}) {
     <p>(2 years)</p>
   </div>
 </div>
-      {/* <div class="skills">
-        <div class="skill">
-          <p>AWS</p>
-          <p>(3 years)</p>
-        </div>
-        <div class="skill">
-          <p>Java</p>
-          <p>(5 years)</p>
-        </div>
-        <div class="skills">
-        <div class="skill">
-          <p>GraphQL </p>
-          <p>(3 years)</p>
-        </div>
-        <div class="skill">
-          <p>React</p>
-          <p>(3 years)</p>
-        </div>
-        <div class="skills">
-        <div class="skill">
-          <p>AWS</p>
-          <p>(3 years)</p>
-        </div>
-        <div class="skill">
-          <p>Java</p>
-          <p>(5 years)</p>
-        </div>
-      </div> */}
 
       <h2>Professional Experience</h2>
       {jobs.map((job, index) => (
@@ -169,12 +145,98 @@ function Content ({selected}) {
           </div>
           }          
           {selected==="Github" &&
-            <a href="https://github.com/thomashuffman">Github</a>
+            <div className="githubLink">
+              <a href="https://github.com/thomashuffman" target="_blank">Github</a>
+              <div id="commitActivityTable"></div>
+            </div>
           }
           {selected==="Projects" &&
             <a href="https://thomashuffman.github.io/Versle1/">Versle</a>
           }
       </div>
 }
+
+// JavaScript code to fetch and display commit activity
+async function displayCommitActivity(username) {
+  const commitActivity = await getCommitActivity(username);
+  const commitActivityTable = document.getElementById('commitActivityTable');
+
+  // Clear existing content
+  commitActivityTable.innerHTML = '';
+
+  // Create a table element
+  const table = document.createElement('table');
+  table.classList.add('commit-activity-table');
+
+  // Create table header
+  const thead = document.createElement('thead');
+  thead.innerHTML = `
+    <tr>
+      <th>Repository</th>
+      <th>Total Commits</th>
+    </tr>
+  `;
+  table.appendChild(thead);
+
+  // Create table body
+  const tbody = document.createElement('tbody');
+  commitActivity.forEach(data => {
+    const row = `
+      <tr>
+        <td>${data.repository}</td>
+        <td>${data.totalCommits}</td>
+      </tr>
+    `;
+    tbody.innerHTML += row;
+  });
+  table.appendChild(tbody);
+
+  // Append the table to the commitActivityTable div
+  commitActivityTable.appendChild(table);
+}
+
+async function getCommitActivity(username) {
+  try {
+    // Fetch repositories of the user
+    const response = await fetch(`https://api.github.com/users/thomashuffman/repos`);
+    const repositories = await response.json();
+
+    // Array to store commit activity for each repository
+    const commitActivity = [];
+
+    // Iterate through each repository
+    for (const repo of repositories) {
+      // Fetch commit activity for the repository
+      const commitsResponse = await fetch(`https://api.github.com/repos/thomashuffman/${repo.name}/stats/commit_activity`);
+      const commitData = await commitsResponse.json();
+
+      // Calculate total commits for the repository
+      if(commitData){
+        const totalCommits = commitData.reduce((acc, week) => acc + week.total, 0);
+
+        // Add repository name and total commits to the array
+        commitActivity.push({ repository: repo.name, totalCommits });
+      }
+    }
+
+    // Return commit activity for all repositories
+    return commitActivity;
+  } catch (error) {
+    console.error('Error fetching commit activity:', error);
+    return null;
+  }
+}
+
+// Example usage
+const username = 'thomashuffman';
+getCommitActivity(username)
+  .then(commitActivity => {
+    console.log('Commit activity:', commitActivity);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+
 
 export default Content
