@@ -13,6 +13,7 @@ const onButtonClick = () => {
 };
 
 function Content ({selected}) {
+  //Test
   if(selected ==="Github"){
     const username = 'thomashuffman'; // Update with your GitHub username
     displayCommitActivity(username);  
