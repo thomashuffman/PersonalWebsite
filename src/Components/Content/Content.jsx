@@ -145,24 +145,49 @@ function Content ({selected}) {
           </div>
           }          
           {selected==="Github" &&
-            <div className="githubLink">
-              <a href="https://github.com/thomashuffman" target="_blank">Github</a>
-              <div id="commitActivityTable"></div>
+          <div>
+                <div className="githubLink">
+                  <a href="https://github.com/thomashuffman" target="_blank">Github Link</a>
+                  <div id="commitActivityTable"></div>
+                  {/* <div class="contributions-graph">
+                    <img src="https://github-readme-stats.vercel.app/api?username=thomashuffman&show_icons=true&theme=radical" alt="GitHub Contributions Graph"></img>
+                  </div> */}
+                </div>
+              
             </div>
           }
-          {selected==="Projects" &&
-            <a href="https://thomashuffman.github.io/Versle1/">Versle</a>
-          }
+{selected === "Projects" && (
+  <div>
+    <div class="versleLink">
+      <a href="https://thomashuffman.github.io/Versle1/" target="_blank">
+        Versle
+      </a>
+      <div class="preview">
+        <iframe
+          src="https://thomashuffman.github.io/Versle1/"
+          frameborder="0"
+          width="100%"
+          height="100%"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+)}
       </div>
 }
 
-// JavaScript code to fetch and display commit activity
 async function displayCommitActivity(username) {
   const commitActivity = await getCommitActivity(username);
   const commitActivityTable = document.getElementById('commitActivityTable');
 
   // Clear existing content
   commitActivityTable.innerHTML = '';
+
+  // Create a message indicating commits from the last 30 days
+  const message = document.createElement('p');
+  message.classList.add('commit-activity-message');
+  message.textContent = 'Showing commits from the last 30 days on GitHub';
+  commitActivityTable.appendChild(message);
 
   // Create a table element
   const table = document.createElement('table');
@@ -183,8 +208,8 @@ async function displayCommitActivity(username) {
   commitActivity.forEach(data => {
     const row = `
       <tr>
-        <td>${data.repository}</td>
-        <td>${data.totalCommits}</td>
+        <td class="repo-name">${data.repository}</td>
+        <td>${data.commitsInLastThirtyDays}</td>
       </tr>
     `;
     tbody.innerHTML += row;
@@ -193,12 +218,23 @@ async function displayCommitActivity(username) {
 
   // Append the table to the commitActivityTable div
   commitActivityTable.appendChild(table);
+
 }
 
+
 async function getCommitActivity(username) {
+  const token = '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';
+  const lastThirtyDaysDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
   try {
     // Fetch repositories of the user
-    const response = await fetch(`https://api.github.com/users/thomashuffman/repos`);
+    const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+      headers: {
+          Authorization: `token ${token}`
+      }
+  });
+  if (!response.ok) {
+      throw new Error('Failed to fetch repositories');
+  }
     const repositories = await response.json();
 
     // Array to store commit activity for each repository
@@ -207,16 +243,22 @@ async function getCommitActivity(username) {
     // Iterate through each repository
     for (const repo of repositories) {
       // Fetch commit activity for the repository
-      const commitsResponse = await fetch(`https://api.github.com/repos/thomashuffman/${repo.name}/stats/commit_activity`);
+      const commitsResponse = await fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?since=${lastThirtyDaysDate}`, {
+        headers: {
+            Authorization: `token ${token}`
+        }
+    });
+    if (!commitsResponse.ok) {
+        throw new Error(`Failed to fetch commit activity for repository ${repo.name}`);
+    }
+      
       const commitData = await commitsResponse.json();
 
       // Calculate total commits for the repository
-      if(commitData){
-        const totalCommits = commitData.reduce((acc, week) => acc + week.total, 0);
+      const commitsInLastThirtyDays = commitData.length;
 
         // Add repository name and total commits to the array
-        commitActivity.push({ repository: repo.name, totalCommits });
-      }
+      commitActivity.push({ repository: repo.name, commitsInLastThirtyDays });
     }
 
     // Return commit activity for all repositories
