@@ -158,21 +158,31 @@ function Content ({selected}) {
             </div>
           }
 {selected === "Projects" && (
-  <div>
-    <div class="versleLink">
-      <a href="https://thomashuffman.github.io/Versle1/" target="_blank">
-        Versle
-      </a>
-      <div class="preview">
-        <iframe
-          src="https://thomashuffman.github.io/Versle1/"
-          frameborder="0"
-          width="100%"
-          height="100%"
-        ></iframe>
+  <div class="section-box">
+    <div class="description">
+    {/* <h1 class="flashy-title">VERSLE</h1> */}
+    <br></br>
+    <br></br>
+    <br></br>
+    <p>This React-based verse guessing game allows players to select books, chapters, and verses while guessing the correct reference.</p>
+<p>It features dynamic dropdown menus for selection and displays real-time feedback on streaks and guesses.</p>
+<p>Implemented with ReactJS, it utilizes conditional rendering and state management for an interactive user experience.</p>
       </div>
+  <div class="versleLink">
+    <a href="https://thomashuffman.github.io/Versle1/" target="_blank">
+      VERSLE
+    </a>
+    <div class="preview">
+      <iframe
+        src="https://thomashuffman.github.io/Versle1/"
+        frameborder="0"
+        width="100%"
+        height="100%"
+      ></iframe>
     </div>
   </div>
+</div>
+
 )}
       </div>
 }
@@ -224,7 +234,7 @@ async function displayCommitActivity(username) {
 
 
 async function getCommitActivity(username) {
-  const token = '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';
+  const token = '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';
   const lastThirtyDaysDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
   try {
     // Fetch repositories of the user

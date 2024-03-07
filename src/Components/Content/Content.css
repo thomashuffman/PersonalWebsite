@@ -375,24 +375,61 @@
     margin: 20px 0;
 }
 
+.section-box {
+    background-color: #fff;
+    padding: 30px; /* Increased padding for more space */
+    border-radius: 20px; /* Increased border-radius for smoother edges */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 40%; /* Center vertically */
+    left: 35%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    width: 40%; /* Increased width for larger size */
+    max-width: 400px; /* Limit maximum width to avoid being too large on larger screens */
+  }
+  
+  .description-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: -5%;
+  }
+
+  .flashy-title {
+    font-size: 48px;
+    color: #0037b6; /* Orange */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow */
+    letter-spacing: 2px; /* Increased letter spacing */
+}
+
 .versleLink {
     position: absolute;
-    top: 20%;
+    top: 5%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     display: flex;
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
+    justify-content: center;
+    align-items: center;
 }
-  
-  .versleLink a {
+
+.versleLink a {
     color: #fff;
-    background-color: #007bff;
-    padding: 10px 20px;
-    border-radius: 5px;
+    background-color: #3191f8;
+    padding: 20px 40px; /* Increase padding for larger button */
+    border-radius: 10px; /* Increase border radius for smoother edges */
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
-  }
+    font-size: 20px; /* Increase font size for title appearance */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for depth effect */
+}
   
   .versleLink a:hover {
     background-color: #0056b3;
@@ -416,5 +453,6 @@
   .versleLink:hover .preview {
     display: block;
   }
+  
   
   
