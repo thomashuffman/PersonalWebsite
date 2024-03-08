@@ -234,15 +234,10 @@ async function displayCommitActivity(username) {
 
 
 async function getCommitActivity(username) {
-  const token = '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';
   const lastThirtyDaysDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
   try {
     // Fetch repositories of the user
-    const response = await fetch(`https://api.github.com/users/${username}/repos`, {
-      headers: {
-          Authorization: `token ${token}`
-      }
-  });
+    const response = await fetch(`https://api.github.com/users/${username}/repos`);
   if (!response.ok) {
       throw new Error('Failed to fetch repositories');
   }
@@ -254,11 +249,7 @@ async function getCommitActivity(username) {
     // Iterate through each repository
     for (const repo of repositories) {
       // Fetch commit activity for the repository
-      const commitsResponse = await fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?since=${lastThirtyDaysDate}`, {
-        headers: {
-            Authorization: `token ${token}`
-        }
-    });
+      const commitsResponse = await fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?since=${lastThirtyDaysDate}`);
     if (!commitsResponse.ok) {
         throw new Error(`Failed to fetch commit activity for repository ${repo.name}`);
     }
