@@ -234,7 +234,7 @@ async function displayCommitActivity(username) {
 
 
 async function getCommitActivity(username) {
-  const token = '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';
+  const token = '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';
   const lastThirtyDaysDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
   try {
     // Fetch repositories of the user
